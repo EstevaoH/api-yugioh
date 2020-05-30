@@ -1,0 +1,14 @@
+<!-- Search form -->
+<form class="form-inline my-2 my-lg-0" [formGroup]="buscarCartaForm">
+    <input class="form-control mr-sm-2" type="text" formControlName="nome" placeholder="Pesquisar" [(ngModel)]="carta.name">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="get_carta()">Pesquisar</button>
+
+</form>
+<div class="error-messages">
+    <ng-container *ngFor="let error of error_messages.nome">
+      <div class="error-message"
+        *ngIf="buscarCartaForm.get('nome').hasError(error.type) && (buscarCartaForm.get('nome').dirty || buscarCartaForm.get('nome').touched)">
+        {{error.message}}
+      </div>
+    </ng-container>
+  </div>

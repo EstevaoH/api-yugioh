@@ -13,7 +13,8 @@ export class BuscarCartaComponent implements OnInit {
 
 
   buscarCartaForm: FormGroup;
-  carta: Carta;
+  carta: Carta[];
+  name: string
 
   erro: string;
 
@@ -25,7 +26,7 @@ export class BuscarCartaComponent implements OnInit {
 
 
   constructor(private cs: CartasService, public formBuilder: FormBuilder,) {
-    this.carta = new Carta();
+    this.carta = [];
 
     this.buscarCartaForm = this.formBuilder.group({
       nome: new FormControl('', Validators.compose([
@@ -35,13 +36,15 @@ export class BuscarCartaComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
+  };
+
+  
 
   get_carta(){
-    this.cs.get_cart(this.carta.name).subscribe(
+    this.cs.get_cart(this.name).subscribe(
       res =>{
         if (res) {
-          this.carta = res;
+          this.carta = res['data'];
           console.log(res);
         } else {
           console.log('erro')

@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CartasService {
 
-  private api_buscarCarta = `${environment.API}name=`;
+  private api_buscarCarta = `${environment.API}archetype=`;
 
   constructor(private http: HttpClient) { }
 
